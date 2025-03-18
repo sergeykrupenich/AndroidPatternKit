@@ -3,6 +3,7 @@ package com.siarheikrupenich.testrepo.presentation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -17,6 +18,10 @@ import com.siarheikrupenich.testrepo.presentation.ui.RepoItem
 fun ReposScreen() {
     val viewModel: ReposScreenViewModel.ViewModel = hiltViewModel()
     val repoState by viewModel.output.repoState.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.input.loadRepos(true)
+    }
 
     RepoState(repoState, viewModel)
 }

@@ -30,10 +30,6 @@ internal interface ReposScreenViewModel {
         private val _repoState = MutableStateFlow<RepoState>(RepoState.Loading)
         override val repoState: StateFlow<RepoState> = _repoState.asStateFlow()
 
-        init {
-            loadRepos(true)
-        }
-
         override fun loadRepos(isRefreshing: Boolean) {
             updateRepoState(isRefreshing)
         }
