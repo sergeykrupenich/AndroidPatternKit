@@ -5,6 +5,7 @@ compileSdk = "34"
 coreTesting = "2.2.0"
 hiltNavigationCompose = "1.2.0"
 minSdk = "24"
+roomRuntime = "2.6.1"
 targetSdk = "34"
 versionCode = "1"
 versionName = "1.0.0"
@@ -37,6 +38,8 @@ timber = "5.0.1"
 shimmer = "0.5.0"
 mockk = "1.13.4"
 turbine = "0.12.1"
+roomCommon = "2.6.1"
+roomKtx = "2.6.1"
 
 [libraries]
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }
@@ -45,6 +48,7 @@ androidx-activity-compose-navigation = { module = "androidx.navigation:navigatio
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigation" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "composeJunitVersion" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui" }
 navigation = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
@@ -64,6 +68,7 @@ okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHtt
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "converter_gson" }
 loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging_interceptor" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 hilt-kapt = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
@@ -72,6 +77,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 test-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 test-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 test-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

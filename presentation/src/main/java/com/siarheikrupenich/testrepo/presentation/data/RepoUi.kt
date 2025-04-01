@@ -1,7 +1,7 @@
 package com.siarheikrupenich.testrepo.presentation.data
 
 internal data class RepoUi(
-    val id: Int,
+    val id: Long,
     val title: String,
     val description: String
 )

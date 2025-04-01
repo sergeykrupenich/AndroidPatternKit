@@ -22,7 +22,6 @@ fun ReposScreen() {
     LaunchedEffect(Unit) {
         viewModel.input.loadRepos(true)
     }
-
     RepoState(repoState, viewModel)
 }
 
@@ -44,13 +43,14 @@ private fun RepoState(repoState: RepoState, reposInput: ReposScreenViewModel.Inp
             }
         )
         is RepoState.Error -> RepoEmptyState(
-            stateMessage = repoState.message ?: stringResource(R.string.common_error_message),
+            stateMessage = repoState.error?.message ?: stringResource(R.string.common_error_message),
             contentDescription = stringResource(R.string.error_content_description),
             stateImageDrawableRes = R.drawable.ic_error,
             buttonTitle = stringResource(R.string.retry),
             emptyButtonAction = {
                 reposInput.loadRepos(true)
-            }
+            },
+            repos = repoState.repos
         )
         RepoState.Loading -> LoadingState()
     }

@@ -31,6 +31,7 @@ android {
 dependencies {
     // Modules
     implementation(project(Modules.core_common))
+    implementation(project(Modules.core_network))
     implementation(project(Modules.domain_repository))
 
     // Android

@@ -2,11 +2,11 @@ package com.siarheikrupenich.domain
 
 import com.siarheikrupenich.domain.mapper.RepoEntityMapper
 import com.siarheikrupenich.domain.mapper.RepoEntityMapperImpl
-import com.siarheikrupenich.testrepo.entity.RepoApiEntity
+import com.siarheikrupenich.testrepo.network.entity.RepoApiEntity
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class RepoEntityMapperTest {
+class DomainRepoEntityMapperTest {
 
     private val mapper: RepoEntityMapper = RepoEntityMapperImpl()
 

@@ -70,7 +70,7 @@ class RepositoriesScreenViewModelTest : BaseTest() {
 
             val receivedSecondState = awaitItem()
             val exceptionState = RepoState.Error(
-                message = "Test Exception"
+                error = "Test Exception"
             )
             Assert.assertEquals(receivedSecondState, exceptionState)
         }

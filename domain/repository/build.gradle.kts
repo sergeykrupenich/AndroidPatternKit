@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -20,4 +22,11 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.gson)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.kapt)
+
+    implementation(project(Modules.core_common))
+    implementation(project(Modules.core_network))
+    implementation(libs.androidx.room.common)
 }

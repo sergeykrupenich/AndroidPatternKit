@@ -1,6 +1,6 @@
-package com.siarheikrupenich.data
+package com.siarheikrupenich.data.network
 
-import com.siarheikrupenich.testrepo.entity.RepoApiEntity
+import com.siarheikrupenich.testrepo.network.entity.RepoApiEntity
 import retrofit2.http.GET
 
 internal interface ReposNetworkApi {

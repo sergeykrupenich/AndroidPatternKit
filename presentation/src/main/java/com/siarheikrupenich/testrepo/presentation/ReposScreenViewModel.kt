@@ -35,8 +35,8 @@ internal interface ReposScreenViewModel {
         }
 
         private fun updateRepoState(isRefreshing: Boolean) = runOnIO {
-            _repoState.value = RepoState.Loading
-            _repoState.value = getRepos(isRefreshing)
+            _repoState.emit(RepoState.Loading)
+            _repoState.emit(getRepos(isRefreshing))
         }
     }
 }

@@ -42,6 +42,7 @@ dependencies {
     implementation(project(Modules.domain))
     implementation(project(Modules.core_common))
     implementation(project(Modules.core_ui))
+    implementation(project(Modules.core_network))
 
     // Libs
     implementation(libs.androidx.core.ktx)

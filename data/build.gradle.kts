@@ -29,7 +29,6 @@ android {
 }
 
 dependencies {
-
     // Modules
     implementation(project(Modules.core_network))
     implementation(project(Modules.core_common))
@@ -41,8 +40,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.retrofit)
 
+    // DB
+    implementation(libs.room.runtime)
+    kapt(libs.androidx.room.compiler)
+
     // DI
     implementation(libs.hilt)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
     kapt(libs.hilt.kapt)
 
     testImplementation(libs.junit)
