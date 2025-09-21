@@ -12,6 +12,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert
 import org.junit.Test
 import com.siarheikrupenich.testrepo.presentation.data.RepoState
+import com.siarheikrupenich.testrepo.presentation.mvvm.MvvmReposScreenViewModel
 import kotlinx.coroutines.test.advanceUntilIdle
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -28,8 +29,8 @@ class RepositoriesScreenViewModelTest : BaseTest() {
             "Test Exception"
         )
     }
-    private val testViewModel = ReposScreenViewModel.ViewModel(testUseCase)
-    private val errorTestViewModel = ReposScreenViewModel.ViewModel(errorTestUseCase)
+    private val testViewModel = MvvmReposScreenViewModel.ViewModel(testUseCase)
+    private val errorTestViewModel = MvvmReposScreenViewModel.ViewModel(errorTestUseCase)
 
     @Test
     fun `receiving repos works properly`() = runRepoTest {

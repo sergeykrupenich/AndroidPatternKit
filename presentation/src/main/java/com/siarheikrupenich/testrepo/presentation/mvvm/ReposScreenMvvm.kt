@@ -1,9 +1,8 @@
-package com.siarheikrupenich.testrepo.presentation
+package com.siarheikrupenich.testrepo.presentation.mvvm
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -13,20 +12,18 @@ import com.siarheikrupenich.testrepo.presentation.data.RepoState
 import com.siarheikrupenich.testrepo.presentation.ui.LoadingState
 import com.siarheikrupenich.testrepo.presentation.ui.RepoEmptyState
 import com.siarheikrupenich.testrepo.presentation.ui.RepoItem
+import com.siarheikrupenich.testrepo.presentation.R
 
 @Composable
-fun ReposScreen() {
-    val viewModel: ReposScreenViewModel.ViewModel = hiltViewModel()
+fun ReposScreenMvvm() {
+    val viewModel: MvvmReposScreenViewModel.ViewModel = hiltViewModel()
     val repoState by viewModel.output.repoState.collectAsState()
 
-    LaunchedEffect(Unit) {
-        viewModel.input.loadRepos(true)
-    }
-    RepoState(repoState, viewModel)
+    RepoState(repoState, viewModel as MvvmReposScreenViewModel.Input)
 }
 
 @Composable
-private fun RepoState(repoState: RepoState, reposInput: ReposScreenViewModel.Input) {
+private fun RepoState(repoState: RepoState, reposInput: MvvmReposScreenViewModel.Input) {
     when (repoState) {
         is RepoState.Success -> LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(repoState.repos.count()) { repoIndex ->
@@ -43,7 +40,8 @@ private fun RepoState(repoState: RepoState, reposInput: ReposScreenViewModel.Inp
             }
         )
         is RepoState.Error -> RepoEmptyState(
-            stateMessage = repoState.error?.message ?: stringResource(R.string.common_error_message),
+            stateMessage = repoState.error?.message ?:
+                stringResource(R.string.common_error_message),
             contentDescription = stringResource(R.string.error_content_description),
             stateImageDrawableRes = R.drawable.ic_error,
             buttonTitle = stringResource(R.string.retry),

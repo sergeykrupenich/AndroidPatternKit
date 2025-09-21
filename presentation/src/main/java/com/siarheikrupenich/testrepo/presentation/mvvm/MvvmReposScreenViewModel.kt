@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation
+package com.siarheikrupenich.testrepo.presentation.mvvm
 
 import com.siarheikrupenich.testrepo.presentation.data.RepoState
 import com.siarheikrupenich.testrepo.presentation.data.usecase.GetUiReposUseCase
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
-internal interface ReposScreenViewModel {
+internal interface MvvmReposScreenViewModel {
 
     interface Input {
         fun loadRepos(isRefreshing: Boolean = false)
