@@ -3,7 +3,7 @@ package com.siarheikrupenich.testrepo.presentation.data
 import com.siarheikrupenich.testrepo.core.network.data.RepoError
 import com.siarheikrupenich.testrepo.core.network.data.ResultWithFallback
 
-internal sealed interface RepoState {
+sealed interface RepoState {
 
     data class Success(val repos: List<RepoUi>): RepoState
 

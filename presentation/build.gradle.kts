@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -65,6 +66,7 @@ dependencies {
     implementation(libs.androidx.activity.compose.navigation)
     implementation(libs.accompanist.swiperefresh)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.compose)
 
     // DI
     implementation(libs.hilt)
