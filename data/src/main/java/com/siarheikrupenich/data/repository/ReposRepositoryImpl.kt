@@ -46,15 +46,17 @@ internal class ReposRepositoryImpl @Inject constructor(
 
     private fun Throwable.exceptionToResultWithFallback(
         data: List<RepoWithRelations>,
-    ): ResultWithFallback.Failure<List<Repo>> = if (data.isNotEmpty()) {
-        ResultWithFallback.Failure(
-            dbReposToReposMapper.map(data), RepoError.Unknown(this)
-        )
-    } else {
-        ResultWithFallback.Failure<List<Repo>>(
-            data = null,
-            RepoError.Unknown(this)
-        )
+    ): ResultWithFallback.Failure<List<Repo>> {
+        return if (data.isNotEmpty()) {
+            ResultWithFallback.Failure(
+                dbReposToReposMapper.map(data), RepoError.Unknown(this)
+            )
+        } else {
+            ResultWithFallback.Failure<List<Repo>>(
+                data = null,
+                RepoError.Unknown(this)
+            )
+        }
     }
 
     private fun Throwable.errorToResultWithFallback(

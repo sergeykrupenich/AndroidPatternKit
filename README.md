@@ -1,6 +1,8 @@
-# TestRepo
+#  AndroidPatternKit
 
-This project is an Android application that displays a list of GitHub repositories for a given organization. It allows users to browse and view repositories with details fetched directly from the GitHub API.
+A modern Android template project, Android MVI/MVVM Template, featuring **MVI and MVVM architecture**, **Jetpack Compose**, **Clean Architecture**, and **multi-module setup**, with full **Unit and UI tests**.
+
+This template is designed to help developers start new Android projects with a solid architecture and best practices in mind.
 
 ## Table of Contents
 - [Features](#features)
@@ -14,7 +16,7 @@ This project is an Android application that displays a list of GitHub repositori
 
 - Display a list of repositories for a specified GitHub organization.
 - View repository details such as name, description, and other metadata.
-- Modular, clean architecture following MVVM principles.
+- Modular, clean architecture following MVVM/MVI principles based on multimodule structure.
 - Smooth UI using Jetpack Compose.
 - Dependency injection with Hilt.
 - Efficient network calls using Retrofit with OkHttp and Coroutines.
@@ -22,7 +24,7 @@ This project is an Android application that displays a list of GitHub repositori
 ## Tech Stack
 
 - **Language**: Kotlin
-- **Architecture**: MVVM (Model-View-ViewModel), Clean Architecture
+- **Architecture**: MVVM (Model-View-ViewModel), MVI (Model-View-Intent), Clean Architecture
 - **UI**: Jetpack Compose
 - **Dependency Injection**: Hilt
 - **Networking**: Retrofit + OkHttp
@@ -40,22 +42,22 @@ The project is structured as a multi-module Android project with the following m
 - **core**: Contains common classes and utilities used across different modules.
 - **data**: Responsible for data management, including API calls (Retrofit) and repository implementations.
 - **domain**: Contains business logic, use cases, and repository interfaces.
-- **presentation**: Manages the user interface layer of the application, including `ViewModel`s and `Composable` views, following the MVVM architecture pattern. This module is responsible for coordinating the display of data to the user and handling user interactions. 
+- **presentation**: Manages the user interface layer of the application, including `ViewModel`s and `Composable` views, following both the MVVM and MVI architecture patterns. This module is responsible for coordinating the display of data to the user and handling user interactions. 
 
 ## Getting Started
 
 ### Prerequisites
 
-- Android Studio Koala | 2024.1.1 Patch 1 or later
-- Gradle 8.9+
-- Kotlin 1.9.25+
+- Android Studio Narwhal 3 Feature Drop | 2025.1.3 or later
+- Gradle 8.14+
+- Kotlin 2.2.10+
 - JDK Oracle OpenJDK 19.0.1
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/sergeykrupenich/TestRepo.git
-cd TestRepo
+git https://github.com/sergeykrupenich/AndroidPatternKit.git
+cd AndroidPatternKit
 ```
 
 ## Testing
@@ -83,6 +85,7 @@ In the future, the project architecture could be evolved into a feature module-b
 
 To enhance the functionality and user experience of the application, the following features could be considered for future implementation:
 
+- **Tab Navigation**: Intuitive tab-based navigation for switching between different sections of the app seamlessly.
+- **Firebase Authentication**: Secure user login and registration flow powered by Firebase Authentication, with support for email/password and third-party providers.
 - **Repository Details View**: Allow users to tap on a repository in the list and view detailed information about the repository, including description, stars, forks, and last updated date.
-- **Search Functionality**: Implement a search bar that allows users to search for specific repositories by name or keywords, making it easier to find a particular repository in large lists.
-- **Offline Support**: Introduce caching mechanisms to enable the application to display repositories even when the device is offline. This would involve saving the latest fetched data locally and updating it when the app regains internet connectivity.
+- **Search Functionality**: Implement a search bar that allows users to search for specific repositories by name or keywords, making it easier to find a particular repository in large lists. 
