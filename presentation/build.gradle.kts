@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -41,6 +42,8 @@ dependencies {
     // Modules
     implementation(project(Modules.domain))
     implementation(project(Modules.core_common))
+    implementation(project(Modules.core_ui))
+    implementation(project(Modules.core_network))
 
     // Libs
     implementation(libs.androidx.core.ktx)
@@ -62,6 +65,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose.navigation)
     implementation(libs.accompanist.swiperefresh)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.compose)
 
     // DI
     implementation(libs.hilt)
@@ -74,7 +79,7 @@ dependencies {
     testImplementation(libs.androidx.core.ktx)
     testImplementation(libs.test.turbine)
     testImplementation(libs.test.coroutines.test)
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation(libs.androidx.core.testing)
 
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

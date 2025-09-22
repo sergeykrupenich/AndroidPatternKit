@@ -1,7 +1,14 @@
 *.iml
 .gradle
-gradle
 .idea
+gradle/.tmp
+gradle/android
+gradle/caches
+gradle/daemon
+gradle/kotlin-profile
+gradle/native
+gradle/wrapper/dists
+gradle/jdks
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -15,3 +22,4 @@ gradle
 .externalNativeBuild
 .cxx
 local.properties
+buildSrc/build

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -22,8 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.siarheikrupenich.testrepo.presentation.R
-import com.siarheikrupenich.testrepo.presentation.ui.style.FontSize
-import com.siarheikrupenich.testrepo.presentation.ui.style.Size
+import com.siarheikrupenich.testrepo.presentation.data.RepoUi
+import com.siarheikrupenich.testrepo.style.FontSize
+import com.siarheikrupenich.testrepo.style.Size
 
 @Composable
 internal fun RepoEmptyState(
@@ -31,7 +33,8 @@ internal fun RepoEmptyState(
     contentDescription: String,
     @DrawableRes stateImageDrawableRes: Int,
     buttonTitle: String,
-    emptyButtonAction: () -> Unit
+    emptyButtonAction: () -> Unit,
+    repos: List<RepoUi>? = null,
 ) {
     Column(
         modifier = Modifier
@@ -59,6 +62,13 @@ internal fun RepoEmptyState(
         Spacer(modifier = Modifier.height(Size.spacing16))
         Button(onClick = { emptyButtonAction() }) {
             Text(text = buttonTitle, style = MaterialTheme.typography.caption)
+        }
+        repos?.let {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(repos.count()) { repoIndex ->
+                    RepoItem(repos[repoIndex])
+                }
+            }
         }
     }
 }

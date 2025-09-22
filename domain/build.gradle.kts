@@ -30,8 +30,9 @@ android {
 
 dependencies {
     // Modules
-    implementation(project(Modules.data))
     implementation(project(Modules.core_common))
+    implementation(project(Modules.core_network))
+    implementation(project(Modules.domain_repository))
 
     // Android
     implementation(libs.androidx.appcompat)

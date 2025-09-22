@@ -1,12 +1,12 @@
 package com.siarheikrupenich.domain
 
-import com.siarheikrupenich.data.model.RepoApiEntity
 import com.siarheikrupenich.testrepo.core.tests.BaseTest
 import com.siarheikrupenich.domain.mapper.RepoEntityMapperImpl
-import com.siarheikrupenich.domain.model.RepoEntity
-import com.siarheikrupenich.domain.repository.ReposRepository
+import com.siarheikrupenich.domain.model.DomainRepoEntity
+import com.siarheikrupenich.testrepo.repository.ReposRepository
 import com.siarheikrupenich.domain.usecase.GetReposUseCase
 import com.siarheikrupenich.domain.usecase.GetReposUseCaseImpl
+import com.siarheikrupenich.testrepo.network.entity.RepoApiEntity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -30,9 +30,9 @@ class GetReposSuspendUseCaseTest : BaseTest() {
         )
 
         val repoEntities = listOf(
-            RepoEntity(1, "repo 1", "desc 1"),
-            RepoEntity(2, "repo 2", "desc 2"),
-            RepoEntity(3, "repo 3", "desc 3")
+            DomainRepoEntity(1, "repo 1", "desc 1"),
+            DomainRepoEntity(2, "repo 2", "desc 2"),
+            DomainRepoEntity(3, "repo 3", "desc 3")
         )
 
         coEvery { testRepository.getRepos(false) } returns Result.success(repoApiEntities)
