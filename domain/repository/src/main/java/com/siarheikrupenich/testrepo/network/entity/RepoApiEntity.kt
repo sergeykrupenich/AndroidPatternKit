@@ -2,8 +2,6 @@ package com.siarheikrupenich.testrepo.network.entity
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import com.siarheikrupenich.testrepo.repository.model.License
-import com.siarheikrupenich.testrepo.repository.model.Owner
 
 @Keep
 data class RepoApiEntity(
@@ -11,7 +9,10 @@ data class RepoApiEntity(
     @SerializedName("id")
     val id: Long?,
 
-    @SerializedName("node_id") val nodeId: String,
+    @SerializedName("node_id")
+    val nodeId: String,
+
+    @SerializedName("name")
     val name: String,
 
     @SerializedName("full_name")

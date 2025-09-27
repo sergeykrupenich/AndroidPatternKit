@@ -3,6 +3,7 @@ package com.siarheikrupenich.testrepo.presentation.mvvm
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -19,6 +20,9 @@ fun ReposScreenMvvm() {
     val viewModel: MvvmReposScreenViewModel.ViewModel = hiltViewModel()
     val repoState by viewModel.output.repoState.collectAsState()
 
+    LaunchedEffect(Unit) {
+        viewModel.input.loadRepos(isRefreshing = true)
+    }
     RepoState(repoState, viewModel as MvvmReposScreenViewModel.Input)
 }
 
@@ -39,6 +43,7 @@ private fun RepoState(repoState: RepoState, reposInput: MvvmReposScreenViewModel
                 reposInput.loadRepos(true)
             }
         )
+
         is RepoState.Error -> RepoEmptyState(
             stateMessage = repoState.error?.message ?:
                 stringResource(R.string.common_error_message),
@@ -50,6 +55,7 @@ private fun RepoState(repoState: RepoState, reposInput: MvvmReposScreenViewModel
             },
             repos = repoState.repos
         )
+
         RepoState.Loading -> LoadingState()
     }
 }
