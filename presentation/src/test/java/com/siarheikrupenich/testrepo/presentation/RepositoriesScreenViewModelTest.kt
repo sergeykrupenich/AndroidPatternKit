@@ -1,6 +1,7 @@
 package com.siarheikrupenich.testrepo.presentation
 
 import app.cash.turbine.test
+import com.siarheikrupenich.testrepo.core.network.data.RepoError
 import com.siarheikrupenich.testrepo.core.tests.BaseTest
 import com.siarheikrupenich.testrepo.presentation.data.RepoUi
 import com.siarheikrupenich.testrepo.presentation.data.usecase.GetUiReposUseCase
@@ -26,7 +27,8 @@ class RepositoriesScreenViewModelTest : BaseTest() {
     }
     private val errorTestUseCase: GetUiReposUseCase = mockk {
         coEvery { this@mockk.invoke(any()) } returns RepoState.Error(
-            "Test Exception"
+            error = RepoError.Unknown(error = Exception("Test Exception")),
+            repos = null
         )
     }
     private val testViewModel = MvvmReposScreenViewModel.ViewModel(testUseCase)
@@ -34,9 +36,13 @@ class RepositoriesScreenViewModelTest : BaseTest() {
 
     @Test
     fun `receiving repos works properly`() = runRepoTest {
+        testViewModel.input.loadRepos(true)
         testViewModel.output.repoState.test {
             val receivedState = awaitItem()
+            assert(receivedState is RepoState.Success)
             Assert.assertEquals(testResult, receivedState)
+
+            cancelAndIgnoreRemainingEvents()
         }
 
         coVerify { testUseCase(true) }
@@ -45,6 +51,7 @@ class RepositoriesScreenViewModelTest : BaseTest() {
 
     @Test
     fun `refresh() works properly`() = runRepoTest {
+        testViewModel.input.loadRepos(true)
         testViewModel.output.repoState.test {
             val receivedState = awaitItem()
             Assert.assertEquals(testResult, receivedState)
@@ -63,17 +70,22 @@ class RepositoriesScreenViewModelTest : BaseTest() {
         confirmVerified(testUseCase)
     }
 
-
     @Test
     fun `error catching works properly`() = runRepoTest {
+        errorTestViewModel.input.loadRepos(true)
         errorTestViewModel.output.repoState.test {
             advanceUntilIdle()
 
-            val receivedSecondState = awaitItem()
+            val receivedState = awaitItem()
+            val receivedError = (receivedState as? RepoState.Error)
+
+            assert(receivedError is RepoState.Error)
+
             val exceptionState = RepoState.Error(
-                error = "Test Exception"
+                error = RepoError.Unknown(error = Exception("Test Exception")),
+                repos = null
             )
-            Assert.assertEquals(receivedSecondState, exceptionState)
+            Assert.assertEquals(receivedError?.error?.message, exceptionState.error?.message)
         }
     }
 }

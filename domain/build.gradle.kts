@@ -49,6 +49,7 @@ dependencies {
     testImplementation(project(Modules.core_tests))
     testImplementation(libs.junit)
     testImplementation(libs.test.mockk)
+    testImplementation(libs.test.coroutines.test)
 }
 
 kapt {
