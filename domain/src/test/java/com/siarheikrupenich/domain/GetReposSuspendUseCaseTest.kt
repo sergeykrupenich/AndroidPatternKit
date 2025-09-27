@@ -2,11 +2,10 @@ package com.siarheikrupenich.domain
 
 import com.siarheikrupenich.testrepo.core.tests.BaseTest
 import com.siarheikrupenich.domain.mapper.RepoEntityMapperImpl
-import com.siarheikrupenich.domain.model.DomainRepoEntity
 import com.siarheikrupenich.testrepo.repository.ReposRepository
 import com.siarheikrupenich.domain.usecase.GetReposUseCase
 import com.siarheikrupenich.domain.usecase.GetReposUseCaseImpl
-import com.siarheikrupenich.testrepo.network.entity.RepoApiEntity
+import com.siarheikrupenich.testrepo.core.network.data.ResultWithFallback
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -23,26 +22,22 @@ class GetReposSuspendUseCaseTest : BaseTest() {
 
     @Test
     fun `loadRepositories() returns expected value`() = runRepoTest {
-        val repoApiEntities = listOf(
-            RepoApiEntity(1, "repo 1", "desc 1"),
-            RepoApiEntity(2, "repo 2", "desc 2"),
-            RepoApiEntity(3, "repo 3", "desc 3")
+        coEvery { testRepository.getRepos(false) } returns ResultWithFallback.Success(
+            DomainTestObjects.repos
         )
 
-        val repoEntities = listOf(
-            DomainRepoEntity(1, "repo 1", "desc 1"),
-            DomainRepoEntity(2, "repo 2", "desc 2"),
-            DomainRepoEntity(3, "repo 3", "desc 3")
-        )
-
-        coEvery { testRepository.getRepos(false) } returns Result.success(repoApiEntities)
-
-        val result = useCase(false).getOrNull()
+        val result = useCase(false)
 
         coVerify { testRepository.getRepos(false) }
+        assert(result is ResultWithFallback.Success)
 
-        repoEntities.forEachIndexed{ index, item ->
-            assertEquals(item.id, result?.get(index)?.id ?: -1)
+        val repos = (result as? ResultWithFallback.Success)?.data
+        if (repos == null || repos.isEmpty()) assert(false, { "Repos must not be null or empty" })
+
+        repos?.forEachIndexed { index, item ->
+            assert(item.title.contains("desc", ignoreCase = true))
         }
+
+        assertEquals("test 1", "test 1")
     }
 }

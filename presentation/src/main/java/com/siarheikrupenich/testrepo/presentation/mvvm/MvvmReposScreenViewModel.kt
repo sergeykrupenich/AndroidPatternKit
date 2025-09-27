@@ -36,7 +36,8 @@ internal interface MvvmReposScreenViewModel {
 
         private fun updateRepoState(isRefreshing: Boolean) = runOnIO {
             _repoState.emit(RepoState.Loading)
-            _repoState.emit(getRepos(isRefreshing))
+            val test = getRepos(isRefreshing)
+            _repoState.emit(test)
         }
     }
 }

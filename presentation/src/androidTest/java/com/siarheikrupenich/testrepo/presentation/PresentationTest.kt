@@ -32,10 +32,10 @@ class PresentationTest {
                 stateMessage = "Test empty state",
                 contentDescription = "Test content description",
                 stateImageDrawableRes = R.drawable.ic_empty_state,
-                buttonTitle = "Retry"
-            ) {
-
-            }
+                buttonTitle = "Retry",
+                emptyButtonAction = { },
+                repos = listOf()
+            )
         }
 
         composeTestRule.onNodeWithText("Test empty state").assertIsDisplayed()
@@ -48,10 +48,9 @@ class PresentationTest {
                 stateMessage = "Test empty state",
                 contentDescription = "Test content description",
                 stateImageDrawableRes = R.drawable.ic_empty_state,
-                buttonTitle = "Retry"
-            ) {
-
-            }
+                buttonTitle = "Retry",
+                emptyButtonAction = { },
+            )
         }
 
         composeTestRule.onNodeWithText("Retry").assertHasClickAction()
