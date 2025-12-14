@@ -1,5 +1,0 @@
-package com.siarheikrupenich.testrepo.dao.mapper;
-
-@kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bf\u0018\u00002\u001a\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00030\u0002\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00040\u00020\u0001\u00a8\u0006\u0005\u00c0\u0006\u0003"}, d2 = {"Lcom/siarheikrupenich/testrepo/dao/mapper/NetworkReposToDbReposMapper;", "Lcom/siarheikrupenich/testrepo/core/Mapper;", "", "Lcom/siarheikrupenich/testrepo/network/entity/RepoApiEntity;", "Lcom/siarheikrupenich/testrepo/dao/entity/RepoWithRelations;", "repository_debug"})
-public abstract interface NetworkReposToDbReposMapper extends com.siarheikrupenich.testrepo.core.Mapper<java.util.List<? extends com.siarheikrupenich.testrepo.network.entity.RepoApiEntity>, java.util.List<? extends com.siarheikrupenich.testrepo.dao.entity.RepoWithRelations>> {
-}
