@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestRepo"
         android:name=".RepoApplication"
-        tools:targetApi="34">
+        tools:targetApi="36">
 
         <activity
             android:name=".MainActivity"
