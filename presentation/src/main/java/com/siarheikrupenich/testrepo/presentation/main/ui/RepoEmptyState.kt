@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation.ui
+package com.siarheikrupenich.testrepo.presentation.main.ui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.siarheikrupenich.testrepo.presentation.R
-import com.siarheikrupenich.testrepo.presentation.data.RepoUi
+import com.siarheikrupenich.testrepo.presentation.main.data.RepoUi
 import com.siarheikrupenich.testrepo.style.FontSize
 import com.siarheikrupenich.testrepo.style.Size
 
@@ -52,7 +52,7 @@ internal fun RepoEmptyState(
         Spacer(modifier = Modifier.height(Size.spacing24))
         Text(
             text = stateMessage,
-            style = MaterialTheme.typography.body1.copy(
+            style = MaterialTheme.typography.titleMedium .copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = FontSize.emptyStateTitleSize
             ),
@@ -61,7 +61,7 @@ internal fun RepoEmptyState(
         )
         Spacer(modifier = Modifier.height(Size.spacing16))
         Button(onClick = { emptyButtonAction() }) {
-            Text(text = buttonTitle, style = MaterialTheme.typography.caption)
+            Text(text = buttonTitle, style = MaterialTheme.typography.bodyMedium)
         }
         repos?.let {
             LazyColumn(modifier = Modifier.fillMaxSize()) {

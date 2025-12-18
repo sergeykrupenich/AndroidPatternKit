@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation.ui
+package com.siarheikrupenich.testrepo.presentation.main.ui
 
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.animateFloat
@@ -11,8 +11,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -43,7 +43,7 @@ internal fun LoadingState(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.surface)
+            .background(MaterialTheme.colorScheme.surface)
     ) {
         Canvas(modifier = Modifier.size(Size.loadingCanvas)) {
             drawCircle(
@@ -53,7 +53,7 @@ internal fun LoadingState(modifier: Modifier = Modifier) {
             )
         }
         CircularProgressIndicator(
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colorScheme.primary,
             strokeWidth = Size.circularProgressWidth,
             modifier = Modifier.size(Size.circularProgressIndicatorSize)
         )

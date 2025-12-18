@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation.data
+package com.siarheikrupenich.testrepo.presentation.main.data
 
 import com.siarheikrupenich.testrepo.core.network.data.RepoError
 import com.siarheikrupenich.testrepo.core.network.data.ResultWithFallback

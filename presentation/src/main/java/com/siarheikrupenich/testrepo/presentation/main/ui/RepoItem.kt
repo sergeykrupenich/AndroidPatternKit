@@ -1,5 +1,6 @@
-package com.siarheikrupenich.testrepo.presentation.ui
+package com.siarheikrupenich.testrepo.presentation.main.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,26 +8,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.siarheikrupenich.testrepo.presentation.data.RepoUi
+import com.siarheikrupenich.testrepo.presentation.main.data.RepoUi
 import com.siarheikrupenich.testrepo.style.Size
-
-import com.siarheikrupenich.testrepo.style.UiConstants.Companion.COLOR_ALPHA_20
 
 @Composable
 internal fun RepoItem(repoUi: RepoUi) {
     Card(
         shape = MaterialTheme.shapes.small,
-        elevation = Size.zero,
-        backgroundColor = MaterialTheme.colors.primary.copy(alpha = COLOR_ALPHA_20),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = Size.spacing4, horizontal = Size.spacing16)
+            .clickable(enabled = true) {
+                val tst = repoUi
+                val test = 0
+            }
     ) {
         Column(
             modifier = Modifier
@@ -35,14 +36,14 @@ internal fun RepoItem(repoUi: RepoUi) {
         ) {
             Text(
                 text = repoUi.title,
-                style = MaterialTheme.typography.subtitle1,
-                color = MaterialTheme.colors.onSurface,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
             )
             Spacer(modifier = Modifier.height(Size.spacing4))
             Text(
                 text = repoUi.description,
-                style = MaterialTheme.typography.subtitle2,
-                color = MaterialTheme.colors.onSurface.copy(alpha = 0.7f)
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
         }
     }

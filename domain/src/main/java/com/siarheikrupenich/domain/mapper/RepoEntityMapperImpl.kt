@@ -8,7 +8,7 @@ internal class RepoEntityMapperImpl: RepoEntityMapper {
     override fun map(param: Repo): DomainRepoEntity = with(param) {
         DomainRepoEntity(
             id = id ?: 0,
-            title = name.orEmpty(),
+            title = fullName,
             description = description.orEmpty()
         )
     }

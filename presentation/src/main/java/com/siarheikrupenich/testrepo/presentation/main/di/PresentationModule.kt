@@ -1,10 +1,10 @@
-package com.siarheikrupenich.testrepo.presentation.di
+package com.siarheikrupenich.testrepo.presentation.main.di
 
 import com.siarheikrupenich.domain.usecase.GetReposUseCase
-import com.siarheikrupenich.testrepo.presentation.data.mapper.RepoUiModelMapper
-import com.siarheikrupenich.testrepo.presentation.data.mapper.RepoUiModelMapperImpl
-import com.siarheikrupenich.testrepo.presentation.data.usecase.GetUiReposUseCase
-import com.siarheikrupenich.testrepo.presentation.data.usecase.GetUiReposUseCaseImpl
+import com.siarheikrupenich.testrepo.presentation.main.data.mapper.RepoUiModelMapper
+import com.siarheikrupenich.testrepo.presentation.main.data.mapper.RepoUiModelMapperImpl
+import com.siarheikrupenich.testrepo.presentation.main.data.usecase.GetUiReposUseCase
+import com.siarheikrupenich.testrepo.presentation.main.data.usecase.GetUiReposUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

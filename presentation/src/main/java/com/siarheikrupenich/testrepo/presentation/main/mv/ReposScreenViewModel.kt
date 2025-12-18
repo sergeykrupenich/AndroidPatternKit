@@ -1,19 +1,19 @@
-package com.siarheikrupenich.testrepo.presentation.mvi
+package com.siarheikrupenich.testrepo.presentation.main.mv
 
 import com.siarheikrupenich.testrepo.core.network.data.RepoError
-import com.siarheikrupenich.testrepo.presentation.data.RepoState
-import com.siarheikrupenich.testrepo.presentation.data.RepoUi
-import com.siarheikrupenich.testrepo.presentation.data.usecase.GetUiReposUseCase
+import com.siarheikrupenich.testrepo.presentation.main.data.RepoState
+import com.siarheikrupenich.testrepo.presentation.main.data.RepoUi
+import com.siarheikrupenich.testrepo.presentation.main.data.usecase.GetUiReposUseCase
 import com.siarheikrupenich.testrepo.viewmodel.ReducerSupportStreamViewModel
 import com.siarheikrupenich.testrepo.viewmodel.state.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MviReposScreenViewModel @Inject constructor(
+class ReposScreenViewModel @Inject constructor(
     private val getRepos: GetUiReposUseCase,
-): ReducerSupportStreamViewModel<RepoUiEvent, MviRepoState, RepoState>(
-    MviRepoState(isLoading = true)
+): ReducerSupportStreamViewModel<RepoUiEvent, com.siarheikrupenich.testrepo.presentation.main.mv.RepoState, RepoState>(
+    RepoState(isLoading = true)
 ) {
     init {
         query(RepoUiEvent.LoadRepos::class.java) { event ->
@@ -53,7 +53,7 @@ sealed class RepoUiEvent : UiEvent {
     data class LoadRepos(val isRefreshing: Boolean) : RepoUiEvent()
 }
 
-data class MviRepoState(
+data class RepoState(
     val isLoading: Boolean = false,
     val isEmpty: Boolean = false,
     val repos: List<RepoUi>? = null,

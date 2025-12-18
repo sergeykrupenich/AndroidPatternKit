@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation.data
+package com.siarheikrupenich.testrepo.presentation.main.data
 
 data class RepoUi(
     val id: Long,

@@ -1,10 +1,10 @@
-package com.siarheikrupenich.testrepo.presentation.data.usecase
+package com.siarheikrupenich.testrepo.presentation.main.data.usecase
 
 import com.siarheikrupenich.domain.usecase.GetReposUseCase
-import com.siarheikrupenich.testrepo.presentation.data.RepoState
-import com.siarheikrupenich.testrepo.presentation.data.mapCatching
-import com.siarheikrupenich.testrepo.presentation.data.mapToRepoState
-import com.siarheikrupenich.testrepo.presentation.data.mapper.RepoUiModelMapper
+import com.siarheikrupenich.testrepo.presentation.main.data.RepoState
+import com.siarheikrupenich.testrepo.presentation.main.data.mapCatching
+import com.siarheikrupenich.testrepo.presentation.main.data.mapToRepoState
+import com.siarheikrupenich.testrepo.presentation.main.data.mapper.RepoUiModelMapper
 import javax.inject.Inject
 
 internal class GetUiReposUseCaseImpl @Inject constructor(

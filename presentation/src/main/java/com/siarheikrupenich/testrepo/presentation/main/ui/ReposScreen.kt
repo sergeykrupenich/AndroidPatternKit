@@ -1,4 +1,4 @@
-package com.siarheikrupenich.testrepo.presentation.mvi
+package com.siarheikrupenich.testrepo.presentation.main.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,14 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.siarheikrupenich.testrepo.presentation.ui.RepoEmptyState
-import com.siarheikrupenich.testrepo.presentation.ui.RepoItem
 import com.siarheikrupenich.testrepo.presentation.R
-import com.siarheikrupenich.testrepo.presentation.ui.LoadingState
+import com.siarheikrupenich.testrepo.presentation.main.mv.RepoState
+import com.siarheikrupenich.testrepo.presentation.main.mv.ReposScreenViewModel
+import com.siarheikrupenich.testrepo.presentation.main.mv.RepoUiEvent
+import kotlin.collections.count
+import kotlin.collections.isNotEmpty
 
 @Composable
-fun ReposScreenMvi() {
-    val viewModel: MviReposScreenViewModel = hiltViewModel()
+fun ReposScreen() {
+    val viewModel: ReposScreenViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
@@ -35,7 +37,7 @@ fun ReposScreenMvi() {
 }
 
 @Composable
-private fun RepoState(repoState: MviRepoState, onUpdate: (() -> Unit)? = null) {
+private fun RepoState(repoState: RepoState, onUpdate: (() -> Unit)? = null) {
     repoState.repos?.let { items ->
         if (items.isNotEmpty()) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {

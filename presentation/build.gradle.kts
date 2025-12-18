@@ -70,6 +70,7 @@ dependencies {
 
     // DI
     implementation(libs.hilt)
+    implementation(libs.androidx.material3)
     kapt(libs.hilt.kapt)
 
     // Test
