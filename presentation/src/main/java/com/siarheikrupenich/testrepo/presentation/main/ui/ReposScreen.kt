@@ -17,7 +17,9 @@ import kotlin.collections.count
 import kotlin.collections.isNotEmpty
 
 @Composable
-fun ReposScreen() {
+fun ReposScreen(
+    onRepoItemSelected: (Long) -> Unit,
+) {
     val viewModel: ReposScreenViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -28,6 +30,7 @@ fun ReposScreen() {
     }
     RepoState(
         repoState = uiState,
+        onRepoItemSelected = onRepoItemSelected,
         onUpdate = {
             viewModel.nextEvent(
                 RepoUiEvent.LoadRepos(isRefreshing = true)
@@ -37,12 +40,16 @@ fun ReposScreen() {
 }
 
 @Composable
-private fun RepoState(repoState: RepoState, onUpdate: (() -> Unit)? = null) {
+private fun RepoState(
+    repoState: RepoState,
+    onRepoItemSelected: (Long) -> Unit,
+    onUpdate: (() -> Unit)? = null,
+) {
     repoState.repos?.let { items ->
         if (items.isNotEmpty()) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(repoState.repos.count()) { repoIndex ->
-                    RepoItem(repoState.repos[repoIndex])
+                    RepoItem(repoState.repos[repoIndex], onRepoItemSelected)
                 }
             }
         }

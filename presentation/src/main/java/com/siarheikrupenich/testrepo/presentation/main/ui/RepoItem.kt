@@ -18,16 +18,13 @@ import com.siarheikrupenich.testrepo.presentation.main.data.RepoUi
 import com.siarheikrupenich.testrepo.style.Size
 
 @Composable
-internal fun RepoItem(repoUi: RepoUi) {
+internal fun RepoItem(repoUi: RepoUi, onRepoItemSelected: (Long) -> Unit,) {
     Card(
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = Size.spacing4, horizontal = Size.spacing16)
-            .clickable(enabled = true) {
-                val tst = repoUi
-                val test = 0
-            }
+            .clickable(enabled = true) { onRepoItemSelected(repoUi.id) }
     ) {
         Column(
             modifier = Modifier
@@ -55,7 +52,8 @@ fun PreviewLazyColumnWithRoundedCards() {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(10) { _ ->
             RepoItem(
-                RepoUi(0, "Test title", "tiest description")
+                RepoUi(0, "Test title", "tiest description"),
+                { }
             )
         }
     }
